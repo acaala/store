@@ -1,7 +1,6 @@
 
 <script lang="ts">
 import { onMount } from "svelte";
-import { dataset_dev, set_data } from "svelte/internal";
 
 
 let data: string
