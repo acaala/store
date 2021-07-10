@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
 const Product = require('../models/product');
 
 const dbURI = process.env.DB_URI
@@ -16,9 +15,9 @@ const PORT = process.env.PORT || 4000;
 
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.get("/api/v1", (req, res) => {
     Product.find().then((result) => res.json( {products: result}));
