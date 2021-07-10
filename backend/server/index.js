@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
-const Product = require('../models/product');
+const productRoutes = require("../routes/productRoutes")
 
 const dbURI = process.env.DB_URI
 
@@ -19,28 +19,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 
-app.get("/api/v1", (req, res) => {
-    Product.find().then((result) => res.json({ products: result }));
-})
-
-app.post("/api/v1/create-product", (req, res) => {
-    const product = new Product(req.body.newProduct);
-
-    product.save().then(result => res.json({ product: result, redirect: '/' })).catch(err => console.log(err))
-})
-
-app.get("/api/v1/product/:id", (req, res) => {
-    const id = req.params.id;
-    Product.findById(id).then((result) => {
-        res.json({ product: result })
-    }).catch(err => console.log(err))
-})
-
-app.delete("/api/v1/product/:id", (req, res) => {
-    const id = req.params.id;
-
-    Product.findByIdAndDelete(id).then(result => res.json({ redirect: "/" }))
-})
+// product routes
+app.use("/api/v1", productRoutes)
 
 app.listen(PORT, () => {
     console.log("\x1b[34m", `listening on ${PORT}`);
