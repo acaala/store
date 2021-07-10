@@ -36,6 +36,12 @@ app.get("/api/v1/product/:id", (req, res) => {
     }).catch(err => console.log(err))
 })
 
+app.delete("/api/v1/product/:id", (req, res) => {
+    const id = req.params.id;
+
+    Product.findByIdAndDelete(id).then(result => res.json({ redirect: "/" }))
+})
+
 app.listen(PORT, () => {
     console.log("\x1b[34m", `listening on ${PORT}`);
 })

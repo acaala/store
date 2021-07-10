@@ -8,8 +8,6 @@
 		await fetch(`http://localhost:4000/api/v1`)
 			.then((r) => r.json())
 			.then((d) => (products = d.products));
-
-		console.log(products);
 	}
 
 	onMount(fetchAllProducts);
