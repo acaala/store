@@ -26,9 +26,10 @@ app.get("/api/v1", (req, res) => {
 
 app.post("/api/v1/create-product", (req, res) => {
     
-    const product = new Product(req.body);
+    const product = new Product(req.body.newProduct);
 
     product.save().then(result => res.json({ product: `${result}`})).catch(err => console.log(err))
+    
     
 })
 
