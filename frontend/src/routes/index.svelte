@@ -13,13 +13,13 @@
 	onMount(fetchAllProducts);
 </script>
 
-<h4 class="center-align">All Products</h4>
-{#if products.length > 0 && products != undefined}
-	{#each products as product}
-		<a href={`product/${product._id}`}>
+<div class="container">
+	<h4 class="center-align">All Products</h4>
+	{#if products.length > 0 && products != undefined}
+		{#each products as product}
 			<ProductCard {...product} />
-		</a>
-	{/each}
-{:else}
-	<p>No Products yet..</p>
-{/if}
+		{/each}
+	{:else}
+		<p>No Products yet..</p>
+	{/if}
+</div>

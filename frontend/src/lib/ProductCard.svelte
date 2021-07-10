@@ -2,6 +2,7 @@
 	export let name;
 	export let body;
 	export let price;
+	export let _id;
 </script>
 
 <div class="row">
@@ -14,7 +15,7 @@
 				<p>{body}</p>
 				<p class="right-align card-title">£{price}</p>
 				<div class="card-action">
-					<a href="/">View more</a>
+					<a href={`product/${_id}`}>View more</a>
 				</div>
 			</div>
 		</div>

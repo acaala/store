@@ -24,8 +24,10 @@
 	};
 </script>
 
-<h1>{product.name}</h1>
-<p>{product.body}</p>
-<h3>£{product.price}</h3>
+<div class="center-align">
+	<h1>{product.name}</h1>
+	<p>{product.body}</p>
+	<h3>£{product.price}</h3>
 
-<button on:click={deleteProduct} class="btn-small">Delete</button>
+	<button on:click={deleteProduct} class="btn-small">Delete</button>
+</div>
