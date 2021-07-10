@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import ProductCard from '$lib/ProductCard.svelte';
+    import { onMount } from 'svelte';
 
 	let products = [];
 
@@ -22,24 +23,9 @@
 </svelte:head>
 
 <h2 class="center-align">Welcome to SvelteStore</h2>
-{#if products.length > 0}
+{#if products.length > 0 && products != undefined}
 	{#each products as product}
-		<div class="row">
-			<div class="col s12 m6">
-				<div class="card blue-grey darken-1">
-					<div class="card-content white-text">
-						<div>
-							<span class="card-title">{product.name}</span>
-						</div>
-						<p>{product.body}</p>
-						<p class="right-align card-title">£{product.price}</p>
-						<div class="card-action">
-							<a href="/">View more</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<ProductCard {...product} />
 	{/each}
 {:else}
 	<p>No Products yet..</p>
