@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Product = require('../models/product');
 
 const dbURI = process.env.DB_URI
 
@@ -15,8 +16,18 @@ const PORT = process.env.PORT || 4000;
 const app = express()
 
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!"});
+app.get("/api/v1", (req, res) => {
+    Product.find().then((result) => res.json( {products: result}));
+})
+
+app.get("/api/v1/create-product", (req, res) => {
+    const product = new Product({
+        name: 'Hammer',
+        price: 4,
+        body: 'Loreum Ipsum'
+    })
+
+    product.save().then(result => res.json({ product: `${result}`})).catch(err => console.log(err))
 })
 
 app.listen(PORT, () => {
