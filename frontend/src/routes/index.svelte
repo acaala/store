@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProductCard from '$lib/ProductCard.svelte';
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	let products = [];
 
@@ -15,14 +15,7 @@
 	onMount(fetchAllProducts);
 </script>
 
-<svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-	/>
-</svelte:head>
-
-<h2 class="center-align">Welcome to SvelteStore</h2>
+<h4 class="center-align">All Products</h4>
 {#if products.length > 0 && products != undefined}
 	{#each products as product}
 		<ProductCard {...product} />
