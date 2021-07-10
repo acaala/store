@@ -12,7 +12,7 @@
 
 		fetch(url, options)
 			.then((res) => res.json())
-			.then((res) => console.log(res));
+			.then((res) => window.location.href = res.redirect);
 	};
 </script>
 

@@ -28,7 +28,7 @@ app.post("/api/v1/create-product", (req, res) => {
     
     const product = new Product(req.body.newProduct);
 
-    product.save().then(result => res.json({ product: `${result}`})).catch(err => console.log(err))
+    product.save().then(result => res.json({ product: `${result}`, redirect: '/' })).catch(err => console.log(err))
     
     
 })
